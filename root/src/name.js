@@ -1,10 +1,9 @@
 /*!
  * {%= name %}
+ * {%= description %}
  * {%= homepage %}
- * (jQuery Mobile) jQuery UI Widget Factory + RequireJS plugin/module boilerplate (for 1.8/9+)
- * Author: @scottjehl, @jrburke, @addyosmani
- * Further changes: @addyosmani
- * Further Further changes: @rob-wood1974
+ * Author: {%= author_name %}
+ * Author URL: {%= author_url %}
  * Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}
  * Licensed under the {%= licenses.join(', ') %} license{%= licenses.length === 1 ? '' : 's' %}.
  */
@@ -30,92 +29,99 @@
 // Then you can construct the widget like so:
 
 // {%= js_safe_name %}.js file:
-// Uncomment this version for a sample using templates
-// define(["jquery", "text!templates/asset.html", "jquery-ui.custom.min","jquery.tmpl"], function ($, assetHtml) {
-define(["jquery", "jqueryui"], function ($, window, document, undefined) {
 
-    // define your widget under a namespace of your choice
-    // 'ao' is used here as a demonstration
-    $.widget( "{%= js_safe_name %}", {
+(function () {
+   'use strict';
 
-        // Options to be used as defaults
-        options: {
-            foo: true,
-            bar: false
-        },
+  // Uncomment this version for a sample using templates
+  // define(["jquery", "text!templates/asset.html", "jquery-ui.custom.min","jquery.tmpl"], function ($, assetHtml) {
+  define(["jquery", "jqueryui"], function ($, window, document, undefined) {
 
-        // Set up widget (e.g. create element, apply theming,
-        // bind events, etc.)
-        _create: function () {
+      // define your widget under a namespace of your choice
+      // 'ao' is used here as a demonstration
+      $.widget( "{%= js_safe_name %}", {
 
-            // _create will automatically run the first time
-            // this widget is called. Put the initial widget
-            // set-up code here, then you can access the element
-            // on which the widget was called via this.element.
-            // The options defined above can be accessed via
-            // this.options
+          // Options to be used as defaults
+          options: {
+              foo: true,
+              bar: false
+          },
 
-            //this.element.addStuff();
-            //this.element.addStuff();
-            //this.element.tmpl(assetHtml).appendTo(this.content);
-        },
+          // Set up widget (e.g. create element, apply theming,
+          // bind events, etc.)
+          _create: function () {
 
-        // Destroy an instantiated plugin and clean up modifications
-        // that the widget has made to the DOM
-        destroy: function () {
-            //t his.element.removeStuff();
-            // For UI 1.8, destroy must be invoked from the base
-            // widget
-            $.Widget.prototype.destroy.call( this );
-            // For UI 1.9, define _destroy instead and don't worry
-            // about calling the base widget
-        },
+              // _create will automatically run the first time
+              // this widget is called. Put the initial widget
+              // set-up code here, then you can access the element
+              // on which the widget was called via this.element.
+              // The options defined above can be accessed via
+              // this.options
 
-        // Private methods/props start with underscores
-        _dosomething: function(){  },
+              //this.element.addStuff();
+              //this.element.addStuff();
+              //this.element.tmpl(assetHtml).appendTo(this.content);
+          },
 
-        // Public methods like these below can can be called
-                // externally:
-        // $("#myelem").foo( "enable", arguments );
+          // Destroy an instantiated plugin and clean up modifications
+          // that the widget has made to the DOM
+          destroy: function () {
+              //t his.element.removeStuff();
+              // For UI 1.8, destroy must be invoked from the base
+              // widget
+              $.Widget.prototype.destroy.call( this );
+              // For UI 1.9, define _destroy instead and don't worry
+              // about calling the base widget
+          },
 
-        enable: function() {  },
+          // Private methods/props start with underscores
+          _dosomething: function(){  },
 
-        methodB: function ( event ) {
-            // _trigger dispatches callbacks the plugin user can
-            // subscribe to
-            //signature: _trigger( "callbackName" , [eventObject],
-            // [uiObject] )
-            console.log("methodB called");
-        },
+          // Public methods like these below can can be called
+                  // externally:
+          // $("#myelem").foo( "enable", arguments );
 
-        methodA: function ( event ) {
-            this._trigger("dataChanged", event, {
-                key: "someValue"
-            });
-        },
+          enable: function() {  },
 
-        //Respond to any changes the user makes to the option method
-        _setOption: function ( key, value ) {
-            switch (key) {
-            case "someValue":
-                //this.options.someValue = doSomethingWith( value );
-                break;
-            default:
-                //this.options[ key ] = value;
-                break;
-            }
+          methodB: function ( event ) {
+              // _trigger dispatches callbacks the plugin user can
+              // subscribe to
+              //signature: _trigger( "callbackName" , [eventObject],
+              // [uiObject] )
+              console.log("methodB called");
+              console.log(event);
+          },
 
-            // For UI 1.8, _setOption must be manually invoked from
-            // the base widget
-            $.Widget.prototype._setOption.apply( this, arguments );
-            // For UI 1.9 the _super method can be used instead
-            //this._super( "_setOption", key, value );
-        }
+          methodA: function ( event ) {
+              this._trigger("dataChanged", event, {
+                  key: "someValue"
+              });
+          },
 
-        //somewhere assetHtml would be used for templating, depending
-        // on your choice.
-    });
-})( jQuery, window, document );
+          //Respond to any changes the user makes to the option method
+          _setOption: function ( key, value ) {
+              switch (key) {
+              case "someValue":
+                  //this.options.someValue = doSomethingWith( value );
+                  console.log(value);
+                  break;
+              default:
+                  //this.options[ key ] = value;
+                  break;
+              }
+
+              // For UI 1.8, _setOption must be manually invoked from
+              // the base widget
+              $.Widget.prototype._setOption.apply( this, arguments );
+              // For UI 1.9 the _super method can be used instead
+              //this._super( "_setOption", key, value );
+          }
+
+          //somewhere assetHtml would be used for templating, depending
+          // on your choice.
+      });
+  })( jQuery, window, document );
+}());
 
 // If you are going to use the RequireJS optimizer to combine files
 // together, you can leave off the "ao.myWidget" argument to define:

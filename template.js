@@ -74,27 +74,36 @@ exports.template = function(grunt, init, done) {
 
     // Generate package.json file, used by npm and grunt.
     init.writePackageJSON('package.json', {
-      name: 'jquery-plugin',
-      version: '0.0.0-ignored',
+      name: props.name,
+      version: props.version,
       npm_test: 'grunt qunit',
+      author_name: props.author_name,
+      author_email: props.author_email,
+      author_url: props.author_url,
+      repository: props.repository,
       // TODO: pull from grunt's package.json
       node_version: '>= 0.8.0',
+      dependencies: {        
+        "jquery": "1.11.0"
+      },
       devDependencies: {
-        'grunt': '^0.4.5',
-        'grunt-cli': '^0.1.13',
-        'grunt-contrib-clean': '~0.7.0',
-        'grunt-contrib-coffee': '^0.13.0',
-        'grunt-contrib-concat': '^0.5.1',
-        'grunt-contrib-jshint': '^0.11.0',
-        'grunt-contrib-uglify': '^0.9.2',
-        'grunt-contrib-watch': '^0.6.1',
-        'grunt-karma': '^0.12.0',
-        'karma-firefox-launcher': '^0.1.6',
-        'karma-phantomjs-launcher': '^0.2.1',
-        'karma-qunit': '^0.1.5',
-        'phantomjs': '^1.9.18',
-        'qunitjs': '^1.19.0',
-        'requirejs': '2.1.16'
+        "grunt": "^0.4.5",
+        "grunt-cli": "^0.1.13",
+        "grunt-contrib-clean": "~0.7.0",
+        "grunt-contrib-coffee": "^0.13.0",
+        "grunt-contrib-concat": "^0.5.1",
+        "grunt-contrib-connect": "^0.11.2",
+        "grunt-contrib-jshint": "^0.11.3",
+        "grunt-contrib-uglify": "^0.9.2",
+        "grunt-contrib-watch": "^0.6.1",
+        "grunt-karma": "^0.12.0",
+        "karma": "^0.13.19",
+        "karma-firefox-launcher": "^0.1.6",
+        "karma-phantomjs-launcher": "^0.2.1",
+        "karma-qunit": "^0.1.5",
+        "phantomjs": "^1.9.18",
+        "qunitjs": "^1.19.0",
+        "requirejs": "2.1.16"
       },
     });
 

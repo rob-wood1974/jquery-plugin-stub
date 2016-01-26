@@ -2,85 +2,79 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    // Metadata.
-    pkg: grunt.file.readJSON('{%= jqueryjson %}'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-    // Task configuration.
-    clean: {
-      files: ['dist']
-    },
-    concat: {
-      options: {
-        banner: '<%= banner %>',
-        stripBanners: true
-      },
-      dist: {
-        src: ['src/jquery.<%= pkg.name %>.js'],
-        dest: 'dist/jquery.<%= pkg.name %>.js'
-      },
-    },
-    uglify: {
-      options: {
-        banner: '<%= banner %>'
-      },
-      dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/jquery.<%= pkg.name %>.min.js'
-      },
-    },
-    qunit: {
-      files: ['test/**/*.html']
-    },
-    jshint: {
-      options: {
-        jshintrc: true
-      },
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
-      src: {
-        src: ['src/**/*.js']
-      },
-      test: {
-        src: ['test/**/*.js']
-      },
-    },
-    watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      },
-      src: {
-        files: '<%= jshint.src.src %>',
-        tasks: ['jshint:src', 'qunit']
-      },
-      test: {
-        files: '<%= jshint.test.src %>',
-        tasks: ['jshint:test', 'qunit']
-      },
-    },
-  });
+	grunt.initConfig({
 
-  // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks("grunt-karma");
-  
-	grunt.registerTask("travis", ["jshint", "karma:travis"]);
+		// Import package manifest
+		pkg: grunt.file.readJSON("package.json"),
+
+		// Banner definitions
+		meta: {
+			banner: "/*██████████████████████████████████████████████████████████████████████████████\n" +
+				" █  <%= pkg.title || pkg.name %> - v<%= pkg.version %>\n" +
+				" █  <%= pkg.description %>\n" +
+				" █  <%= pkg.author.url %>\n" +
+				" █  Made by <%= pkg.author.name %>\n" +
+				" █  Under <%= pkg.license %> License\n" +
+				" █████████████████████████████████████████████████████████████████████████████*/\n"
+		},
+
+		// Concat definitions
+		concat: {
+			options: {
+				banner: "<%= meta.banner %>"
+			},
+			dist: {
+				src: ["src/*.js"],
+				dest: "dist/jquery.<%= pkg.name %>.js"
+			}
+		},
+
+		// Lint definitions
+		jshint: {
+			files: ["src/*.js"],
+			options: {
+				jshintrc: ".jshintrc"
+			}
+		},
+
+		// Minify definitions
+		uglify: {
+			my_target: {
+				src: ["dist/jquery.<%= pkg.name %>.js"],
+				dest: "dist/jquery.<%= pkg.name %>.min.js"
+			},
+			options: {
+				banner: "<%= meta.banner %>"
+			}
+		},
+
+		// CoffeeScript compilation
+		coffee: {
+			compile: {
+				files: {
+					"dist/jquery.<%= pkg.name %>.js": "src/jquery.<%= pkg.name %>.coffee"
+				}
+			}
+		},
+
+		// watch for changes to source
+		// Better than calling grunt a million times
+		// (call 'grunt watch')
+		watch: {
+		    files: ['src/*'],
+		    tasks: ['default']
+		}
+
+	});
+
+	grunt.loadNpmTasks("grunt-contrib-concat");
+	grunt.loadNpmTasks("grunt-contrib-jshint");
+	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks("grunt-contrib-coffee");
+	grunt.loadNpmTasks("grunt-contrib-watch");
+
 	grunt.registerTask("build", ["concat", "uglify"]);
-	grunt.registerTask("default", ["jshint", "build", "karma:unit:run"]);
-
-  // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'clean', 'concat', 'uglify']);
+	grunt.registerTask("default", ["jshint", "build"]);
+	grunt.registerTask("travis", ["default"]);
 
 };
