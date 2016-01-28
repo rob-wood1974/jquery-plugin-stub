@@ -1,5 +1,5 @@
 # grunt-init-jquery-plugin-stub
-> Create a jQuery plugin with [grunt-init][], including unit tests and other operations.
+> Create a jQuery plugin stub/skeleton (using RequireJS with core dependencies and dev tasks setup) with [grunt-init][].
 
 [grunt-init]: http://gruntjs.com/project-scaffolding
 

@@ -9,14 +9,14 @@
 'use strict';
 
 // Basic template description.
-exports.description = 'Create a jQuery plugin with [grunt-init][], including unit tests and other operations.';
+exports.description = 'Create a jQuery plugin stub/skeleton (using RequireJS with core dependencies and dev tasks setup) with [grunt-init][].';
 
 // Template-specific notes to be displayed before question prompts.
-exports.notes = '_Project name_ should not contain "jquery" or "js" and ' +
+exports.notes = '_Project name_ should not contain 'jquery' or 'js' and ' +
   'should be a unique ID not already in use at plugins.jquery.com. _Project ' +
   'title_ should be a human-readable title, and doesn\'t need to contain ' +
-  'the word "jQuery", although it may. For example, a plugin titled "Awesome ' +
-  'Plugin" might have the name "awesome-plugin".' +
+  'the word 'jQuery', although it may. For example, a plugin titled 'Awesome ' +
+  'Plugin' might have the name 'awesome-plugin'.' +
   '\n\n'+
   'For more information, please see the following documentation:' +
   '\n\n'+
@@ -70,7 +70,7 @@ exports.template = function(grunt, init, done) {
     init.addLicenseFiles(files, props.licenses);
 
     // Actually copy (and process) files.
-    init.copyAndProcess(files, props, {noProcess: 'libs/**'});
+    init.copyAndProcess(files, props, {noProcess: 'lib/**'});
 
     // Generate package.json file, used by npm and grunt.
     init.writePackageJSON('package.json', {
@@ -78,38 +78,40 @@ exports.template = function(grunt, init, done) {
       version: props.version,
       npm_test: 'grunt qunit',
       author_name: props.author_name,
-      author_email: props.author_email,
       author_url: props.author_url,
       repository: props.repository,
       // TODO: pull from grunt's package.json
-      node_version: '>= 0.8.0',
-      dependencies: {        
-        "jquery": "1.11.0"
+      node_version: '>= 5.3.0',
+      dependencies: {
+        'requirejs': '2.1.22',
+        'jquery': '2.2.0',
+        'jquery-ui': '1.11.4',
+        'bootstrap': '3.3.6'
       },
       devDependencies: {
-        "grunt": "^0.4.5",
-        "grunt-cli": "^0.1.13",
-        "grunt-contrib-clean": "~0.7.0",
-        "grunt-contrib-coffee": "^0.13.0",
-        "grunt-contrib-concat": "^0.5.1",
-        "grunt-contrib-connect": "^0.11.2",
-        "grunt-contrib-jshint": "^0.11.3",
-        "grunt-contrib-uglify": "^0.9.2",
-        "grunt-contrib-watch": "^0.6.1",
-        "grunt-karma": "^0.12.0",
-        "karma": "^0.13.19",
-        "karma-firefox-launcher": "^0.1.6",
-        "karma-phantomjs-launcher": "^0.2.1",
-        "karma-qunit": "^0.1.5",
-        "phantomjs": "^1.9.18",
-        "qunitjs": "^1.19.0",
-        "requirejs": "2.1.16"
+        'grunt': '^0.4.5',
+        'grunt-cli': '^0.1.13',
+        'grunt-contrib-clean': '~0.7.0',
+        'grunt-contrib-coffee': '^0.13.0',
+        'grunt-contrib-concat': '^0.5.1',
+        'grunt-contrib-connect': '^0.11.2',
+        'grunt-contrib-jshint': '^0.11.3',
+        'grunt-contrib-uglify': '^0.9.2',
+        'grunt-contrib-watch': '^0.6.1',
+        'grunt-karma': '^0.12.0',
+        'karma': '^0.13.19',
+        'karma-firefox-launcher': '^0.1.6',
+        'karma-phantomjs-launcher': '^0.2.1',
+        'karma-qunit': '^0.1.5',
+        'phantomjs': '^1.9.18',
+        'qunitjs': '^1.19.0',
+        'requirejs': '2.1.16'
       },
     });
 
     // Generate jquery.json file.
     init.writePackageJSON(props.jqueryjson, props, function(pkg, props) {
-      // The jQuery site needs the "bugs" value as a string.
+      // The jQuery site needs the 'bugs' value as a string.
       if ('bugs' in props) { pkg.bugs = props.bugs; }
       return pkg;
     });

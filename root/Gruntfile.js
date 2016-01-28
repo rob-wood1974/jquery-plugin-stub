@@ -48,15 +48,6 @@ module.exports = function(grunt) {
 			}
 		},
 
-		// CoffeeScript compilation
-		coffee: {
-			compile: {
-				files: {
-					"dist/jquery.<%= pkg.name %>.js": "src/jquery.<%= pkg.name %>.coffee"
-				}
-			}
-		},
-
 		// watch for changes to source
 		// Better than calling grunt a million times
 		// (call 'grunt watch')
@@ -70,7 +61,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-concat");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-contrib-uglify");
-	grunt.loadNpmTasks("grunt-contrib-coffee");
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	grunt.registerTask("build", ["concat", "uglify"]);
