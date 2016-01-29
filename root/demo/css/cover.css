@@ -174,3 +174,11 @@ body {
     width: 1280px;
   }
 }
+
+#{%= js_safe_name %}_div{text-align:left;width:100%;border:1px solid #dedede;position:relative;padding-bottom:35px;}
+.cover-container{padding-top:90px;padding-bottom:90px;}
+.mastheadinner{padding:0 1em;}
+.just{text-align:justify;}
+@media (min-width: 992px) {
+ .mastheadinner{padding:0 10em;} 
+}

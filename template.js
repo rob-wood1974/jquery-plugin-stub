@@ -70,7 +70,7 @@
       init.addLicenseFiles(files, props.licenses);
   
       // Actually copy (and process) files.
-      init.copyAndProcess(files, props, {noProcess: 'lib/**'});
+      init.copyAndProcess(files, props, {noProcess: ['lib/**','resource/**']});
   
       // Generate package.json file, used by npm and grunt.
       init.writePackageJSON('package.json', {

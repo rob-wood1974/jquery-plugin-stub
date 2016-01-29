@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="author" content="Rob Wood <rob@virtualstyle.us> (http://rob-wood.net)">
-<meta name="description" content="Base dependencies for my jquery apps/plugins.">
+<meta name="author" content="{%= author_name %} <{%= author_email %}> ({%= author_url %})">
+<meta name="description" content="{%= description %}">
 <link rel="icon" href="../../favicon.ico">
 
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Rob Wood - Client Side Platform Build</title>
+<title>{%= name %}</title>
 <!-- Bootstrap base and theme-->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
@@ -27,16 +27,6 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
   
-<style>
-#plugin_div{text-align:left;width:100%;border:1px solid #dedede;position:relative;padding-bottom:35px;}
-.cover-container{padding-top:90px;padding-bottom:90px;}
-.mastheadinner{padding:0 1em;}
-.just{text-align:justify;}
-@media (min-width: 992px) {
- .mastheadinner{padding:0 10em;} 
-}
-</style>
-
 </head>
 
 <body>
@@ -46,11 +36,13 @@
   
     <div class="masthead clearfix">
       <div class="mastheadinner">
-        <h3 class="masthead-brand">Rob Wood</h3>
+        <h3 class="masthead-brand">{%= name %}</h3>
         <nav>
           <ul class="nav masthead-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Features</a></li>
+            <li><a href="#">Download</a></li>
+            <li><a href="#">Demo</a></li>
+            <li><a href="#">API</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
         </nav>
@@ -60,13 +52,13 @@
     <div class="cover-container">
     
       <div class="inner cover">
-        <h1 class="cover-heading">Rob Wood - Client Side Platform Build</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-        <p class="lead"> <a href="#" class="btn btn-lg btn-default">Learn more</a> </p>
+        <h1 class="cover-heading">{%= name %}</h1>
+        <p class="lead">{%= description %}</p>
+        <p class="lead"> <a href="#" class="btn btn-lg btn-default">Download &amp; Install</a> </p>
       </div>
       
-      <div class="inner cover clearfix" id="plugin_div">
-        <h2 class="left clearfix">Plugin Test Output:</h2>
+      <div class="inner cover clearfix" id="{%= js_safe_name %}_div">
+        <h2 class="left clearfix">{%= name %} Test Output:</h2>
       </div>
       
       <div class="inner cover">
@@ -89,7 +81,7 @@
     
     <div class="mastfoot">
       <div class="mastheadinner">
-        <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        <p id="copyright">&copy;2016 {%= author_name %}</p>
       </div>
     </div>
     
@@ -97,8 +89,16 @@
   
 </div>
 
+<script>
+var {%= js_safe_name %}_exec = function() {
+  
+  'use strict';
+  $('#{%= js_safe_name %}_div').alpha().beta();
+  
+};
+</script>
 <!-- Load RequireJS from CDN. Test if that succeeded, if not, load from local backup. (Running app.js in js folder)--> 
-<script data-main="js/app" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.js"></script> 
-<script>window.require || document.write('<script data-main="js/app" src="js/lib/requirejs/require.js">\x3C/script>')</script>
+<script data-main="../src/app" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.js"></script> 
+<script>window.require || document.write('<script data-main="../src/app" src="../lib/requirejs/require.js">\x3C/script>')</script>
 </body>
 </html>

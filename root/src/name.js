@@ -93,8 +93,6 @@ define(['jquery', 'jqueryui', 'bootstrap', 'jquery.alpha', 'jquery.beta'], funct
             //this._super( "_setOption", key, value );
         }
 
-        //somewhere assetHtml would be used for templating, depending
-        // on your choice.
     });
+    
 });
-
