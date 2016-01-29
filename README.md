@@ -1,6 +1,8 @@
 # grunt-init-jquery-plugin-stub
 > Create a jQuery plugin stub/skeleton (using RequireJS with core dependencies and dev tasks setup) with [grunt-init][].
 
+Example output here: http://rob-wood.net/code/jquery-plugin-stub-example/demo/index.html
+
 [grunt-init]: http://gruntjs.com/project-scaffolding
 
 ## Installation
