@@ -27,4 +27,6 @@ requirejs.config({
     }
 });
 //Load the app
+/* jshint ignore:start */
 requirejs(['../src/jquery.{%= name %}'], {%= js_safe_name %}_exec);
+/* jshint ignore:end */

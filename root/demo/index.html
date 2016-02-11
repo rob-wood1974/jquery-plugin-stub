@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
 <meta name="author" content="{%= author_name %} <{%= author_email %}> ({%= author_url %})">
 <meta name="description" content="{%= description %}">
+<title>{%= name %}</title>
+
 <link rel="icon" href="../../favicon.ico">
 
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>{%= name %}</title>
-<!-- Bootstrap base and theme-->
+<!-- Bootstrap base and theme CSS-->
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
@@ -54,7 +56,7 @@
       <div class="inner cover">
         <h1 class="cover-heading">{%= name %}</h1>
         <p class="lead">{%= description %}</p>
-        <p class="lead"> <a href="#" class="btn btn-lg btn-default">Download &amp; Install</a> </p>
+        <p class="lead"> <a href="dist/jquery.{%= js_safe_name %}.min.js" download="jquery.{%= js_safe_name %}.min.js" class="btn btn-lg btn-default" id="">Download &amp; Install</a> </p>
       </div>
       
       <div class="inner cover clearfix" id="{%= js_safe_name %}_div">
@@ -62,9 +64,9 @@
       </div>
       
       <div class="inner cover">
-        <h2 class="just">Lorem Ipsum Test Text:</h2>
+        <h2 class="just">Lorem Ipsum Dolor Sit Amet</h2>
         <p class="just">
-        Lorem ipsum dolor sit amet, dui urna lacus sed nibh urna, quisque urna magna. Consequat nibh duis necessitatibus, rhoncus et enim vitae, nec sodales molestie in massa nam arcu, neque lacus convallis ipsum etiam, in sit felis torquent. Malesuada egestas lectus vel pulvinar lacinia, libero neque debitis id, risus sapien dignissim dui sociosqu ornare, et metus a. Massa est pellentesque vestibulum iaculis, elementum massa gravida sit, quis vestibulum varius porta, sed nec donec dui. Congue magna ante ac erat leo, magna sed fusce, eget nulla faucibus felis, justo hac euismod diam sed consectetur, donec elit urna vestibulum magna. Inceptos diam non sed, lacus ac. Commodo magnis euismod montes, sodales wisi suscipit tellus, ante tempus nec, eu urna ut, porttitor suscipit nunc quam nonummy. Lorem ultricies sed viverra tortor nunc fermentum, condimentum integer, lacus quam eros libero nunc nec. Et volutpat purus ac massa id. Eu sit consequat quis magna, ante turpis, vestibulum eu feugiat a natoque curabitur quisque, vivamus rhoncus mi et, tellus ipsum integer pretium dolor enim felis.</p>
+        Dui urna lacus sed nibh urna, quisque urna magna. Consequat nibh duis necessitatibus, rhoncus et enim vitae, nec sodales molestie in massa nam arcu, neque lacus convallis ipsum etiam, in sit felis torquent. Malesuada egestas lectus vel pulvinar lacinia, libero neque debitis id, risus sapien dignissim dui sociosqu ornare, et metus a. Massa est pellentesque vestibulum iaculis, elementum massa gravida sit, quis vestibulum varius porta, sed nec donec dui. Congue magna ante ac erat leo, magna sed fusce, eget nulla faucibus felis, justo hac euismod diam sed consectetur, donec elit urna vestibulum magna. Inceptos diam non sed, lacus ac. Commodo magnis euismod montes, sodales wisi suscipit tellus, ante tempus nec, eu urna ut, porttitor suscipit nunc quam nonummy. Lorem ultricies sed viverra tortor nunc fermentum, condimentum integer, lacus quam eros libero nunc nec. Et volutpat purus ac massa id. Eu sit consequat quis magna, ante turpis, vestibulum eu feugiat a natoque curabitur quisque, vivamus rhoncus mi et, tellus ipsum integer pretium dolor enim felis.</p>
         <p class="just">
         Leo sit, phasellus lobortis congue turpis, dictum mauris mauris nulla, consequat litora aliquet. Neque metus luctus, proin integer molestie a lectus bibendum, semper semper malesuada integer adipiscing, id elit ornare diam quisque, senectus placerat nisl platea molestie id. Non felis eget imperdiet libero, tortor tellus, nullam adipiscing wisi eu vitae lobortis, scelerisque at. In feugiat ut eget leo quam, accumsan lacus. Proin placeat consequat amet donec luctus lacus. Cras etiam suspendisse quis vitae, tortor massa pede, sagittis ligula nihil quisque vestibulum malesuada. Diam erat tristique elit, turpis massa tortor morbi fermentum urna, nulla duis diam convallis vitae proin morbi, augue risus in odio. Eget sodales purus et, pede a in libero adipisicing, arcu nulla porta libero ut sem non, sed et proin consectetuer dapibus eros, varius deleniti interdum morbi augue maiores. Vel curabitur et diam, in proin ipsum nec at, officia aptent arcu felis fringilla, neque mi vulputate curabitur nulla nec lacus. Natoque wisi, aliquam sollicitudin nunc, maecenas non metus orci velit suscipit. Feugiat gravida pede, odio felis vel egestas ipsum non, a ac, cursus neque pharetra consectetuer consectetuer maecenas in, sed odio felis faucibus dictumst quisque.</p>
         <p class="just">
